@@ -1,0 +1,87 @@
+{
+  "clean": {
+    "price_rows": 1500,
+    "trade_rows": 900,
+    "injected": {},
+    "rejected": {},
+    "checks": {
+      "negative_positions": 0,
+      "duplicate_trade_ids_in_staging": 0,
+      "prices_missing_for_calendar": 0,
+      "orphan_trades": 0,
+      "trades_not_all_accounted": 0,
+      "drawdown_positive": 0
+    },
+    "build_s": 0.054
+  },
+  "faulty": {
+    "price_rows": 1500,
+    "trade_rows": 907,
+    "injected": {
+      "duplicate_id": 1,
+      "non_positive_quantity": 1,
+      "unknown_security": 1,
+      "missing_value": 1,
+      "price_outside_band": 1,
+      "not_a_business_day": 1,
+      "invalid_side": 1
+    },
+    "rejected": {
+      "duplicate_id": 1,
+      "invalid_side": 1,
+      "missing_value": 1,
+      "non_positive_quantity": 1,
+      "not_a_business_day": 1,
+      "price_outside_band": 1,
+      "unknown_security": 1
+    },
+    "checks": {
+      "negative_positions": 0,
+      "duplicate_trade_ids_in_staging": 0,
+      "prices_missing_for_calendar": 0,
+      "orphan_trades": 0,
+      "trades_not_all_accounted": 0,
+      "drawdown_positive": 0
+    },
+    "build_s": 0.047
+  },
+  "faults_injected": {
+    "duplicate_id": 1,
+    "non_positive_quantity": 1,
+    "unknown_security": 1,
+    "missing_value": 1,
+    "price_outside_band": 1,
+    "not_a_business_day": 1,
+    "invalid_side": 1
+  },
+  "faults_detected": {
+    "duplicate_id": 1,
+    "non_positive_quantity": 1,
+    "unknown_security": 1,
+    "missing_value": 1,
+    "price_outside_band": 1,
+    "not_a_business_day": 1,
+    "invalid_side": 1
+  },
+  "all_injected_faults_detected": true,
+  "sql_vs_numpy_max_abs_diff_value": 1.1641532182693481e-10,
+  "sql_vs_numpy_max_abs_diff_return": 4.440892098500626e-16,
+  "performance": {
+    "F1": {
+      "days": 250,
+      "total_return": -0.04673448521469015,
+      "max_drawdown": -0.06878019356656628
+    },
+    "F2": {
+      "days": 250,
+      "total_return": -0.016187626540836053,
+      "max_drawdown": -0.08538418775135814
+    },
+    "F3": {
+      "days": 250,
+      "total_return": 0.004546652931353146,
+      "max_drawdown": -0.06320173957689657
+    }
+  },
+  "note": "Synthetic data generated with a fixed seed; no real fund or client data."
+}

@@ -1,0 +1,11 @@
+{
+  "generated_utc": "2026-10-11T17:21:25+00:00",
+  "python": "3.13.16",
+  "results": {
+    "REPORT.md": "b38ebdbbfd3812b38ce99581b608045c3260ba1ec8892becd8b128d943fab19f",
+    "fund_index.svg": "383142318f35ea68122f670626d152bc737db6bb7bfd21ec42d1a100a938a54a",
+    "fund_performance.csv": "4a680229b41c63555e3fbcd9cce0bcff429b84bb78903408e4a8a4f84bacb48e",
+    "quality_report.csv": "77a51b4dc93f0dd80635b7a465ffb894e9aec05e79c69e389424b8879ce9f486",
+    "summary.json": "6c6dfc07a1b617baadc28e8b713ad42c9ecedf1080f64347f7e9c770afe1b8ed"
+  }
+}
