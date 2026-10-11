@@ -1,0 +1,92 @@
+{
+  "id": "sql",
+  "number": "11",
+  "field": "Data engineering",
+  "title": "SQL fund data pipeline",
+  "card_detail": "SQLite pipeline: staging, rejects, window-function marts and quality checks.",
+  "context": "A small SQL data pipeline on synthetic fund prices and trades: raw tables, staging with a reject table, marts built with SQL window functions, and automated data-quality checks. Built in October 2026 as a practice project. It uses no real fund or client data, no cloud database and no cash or currency handling.",
+  "stamp": "Python · SQLite · SQL",
+  "statement": {
+    "tool": "SQLite and SQL window functions, driven from Python",
+    "built": "Seven reject rules, positions, time-weighted returns and drawdown marts, six quality checks and 15 tests",
+    "result": "All 7 injected faults were rejected with the right reason, and the SQL marts matched an independent NumPy calculation to 1e-10 in value"
+  },
+  "flow_label": "Raw load to staging to marts to checks",
+  "flow": [
+    [
+      "Raw",
+      "CSV text into SQLite",
+      "1500 prices · 900 trades"
+    ],
+    [
+      "Staging",
+      "Typed rows and rejects",
+      "Seven rules"
+    ],
+    [
+      "Marts",
+      "Positions, return, drawdown",
+      "Window functions"
+    ],
+    [
+      "Checks",
+      "SQL quality checks",
+      "Six checks · 15 tests"
+    ]
+  ],
+  "method_note": "Every raw trade ends up either staged or in the reject table with the first rule it broke, so no row disappears silently. The daily return is time-weighted, so contributions are not counted as performance.",
+  "plots": [
+    {
+      "file": "fund_index.svg",
+      "label": "Fund index",
+      "alt": "Cumulative performance index of three synthetic funds over 250 business days",
+      "caption": "Generated output · fund index from the SQL mart"
+    }
+  ],
+  "spec": [
+    [
+      "Data",
+      "Synthetic prices and trades, fixed seed, three funds, six securities"
+    ],
+    [
+      "Database",
+      "SQLite, three SQL scripts"
+    ],
+    [
+      "Calculations",
+      "Positions, fund value, time-weighted return, index, drawdown"
+    ],
+    [
+      "Not included",
+      "Cloud warehouse, cash, currencies, incremental loads"
+    ]
+  ],
+  "results_head": [
+    "Check",
+    "Result"
+  ],
+  "results": [
+    [
+      "Clean load",
+      "1500 prices, 900 trades, 0 rejected, 0 failed checks"
+    ],
+    [
+      "Faulty load",
+      "7 injected faults, one per rule, all rejected correctly"
+    ],
+    [
+      "SQL against NumPy",
+      "max difference 1.2e-10 in value, 4.4e-16 in return"
+    ],
+    [
+      "Fund total returns",
+      "-4.67%, -1.62%, 0.45% (random synthetic prices)"
+    ]
+  ],
+  "decisions": [
+    "Rejects are kept in a table with a reason instead of being dropped.",
+    "Time-weighted return so that trades do not look like performance.",
+    "A second, independent calculation in NumPy to verify the SQL."
+  ],
+  "verification": "15 tests inject one fault per reject rule, an oversell and a corrupted mart row, check that every raw trade is accounted for, compare the marts with NumPy and rebuild twice to show the load is repeatable."
+}
